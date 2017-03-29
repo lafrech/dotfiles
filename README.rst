@@ -1,5 +1,5 @@
 # Clone repo + submodules
-git clone --recursive -j8 https://github.com/lafrech/dotfiles .dotfiles
+git clone --recursive https://github.com/lafrech/dotfiles .dotfiles
 
 # Clone submodules on already cloned repo
 git submodule update --init --recursive
