@@ -6,8 +6,8 @@ import os.path
 # src, dst tuples
 # Note symlink is src <- dst
 SRC_DST = (
-    ('.bash_aliases', '.bash_aliases'),
-    ('.gitconfig', '.gitconfig'),
+    ('bash_aliases', '.bash_aliases'),
+    ('gitconfig', '.gitconfig'),
     ('gitignore/Global/Vim.gitignore', '.vim_gitignore'),
 )
 
