@@ -4,7 +4,11 @@ alias la='ls -A'
 alias l='ls -CF'
 
 # Editor
-EDITOR="gvim --nofork"
+if [ -z $DISPLAY ] ; then
+    export EDITOR=vi
+else
+    export EDITOR="gvim --nofork"
+fi
 
 # Find in source code
 sfind()
