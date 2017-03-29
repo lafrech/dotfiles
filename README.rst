@@ -1,10 +1,17 @@
-# Clone repo + submodules
-git clone --recursive https://github.com/lafrech/dotfiles .dotfiles
+Installation / update
+=====================
 
-# Clone submodules on already cloned repo
-git submodule update --init --recursive
+::
+
+    # Clone repo + submodules
+    git clone --recursive https://github.com/lafrech/dotfiles .dotfiles
+
+    # Clone submodules on already cloned repo
+    git submodule update --init --recursive
 
 (Source: http://stackoverflow.com/a/4438292/4653485)
 
-# Pull and update submodules
-git pullall
+::
+
+    # Pull and update submodules
+    git pullall
