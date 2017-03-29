@@ -1,0 +1,21 @@
+[push]
+	default = simple
+[diff]
+	tool = gvimdiff
+[core]
+	excludesfile = ~/.vim_gitignore
+[merge]
+	tool = gvimdiff
+[alias]
+	co = checkout
+	ci = commit
+	st = status
+	br = branch
+        logd = log --decorate
+	hist = log --pretty=format:'%C(auto)%h %ad | %s%d %C(magenta)[%an]' --graph --date=short
+        rm-remote-branch = push origin --delete
+        # http://stackoverflow.com/a/4611550/4653485
+	pullall = "!f(){ git pull \"$@\" && git submodule update --init --recursive; }; f"
+
+[include]
+    path = ~/.gitconfig_local
