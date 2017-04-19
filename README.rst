@@ -1,5 +1,13 @@
+This repository stores configuration files (dotfiles) for a few applications.
+
+First, install common applications::
+
+    aptitude install git
+    aptitude install vim vim-pathogen
+
+
 Installation / update
-=====================
+---------------------
 
 ::
 
@@ -15,3 +23,7 @@ Installation / update
 
     # Pull and update submodules
     git pullall
+
+Run setup script (creates symlinks in home dir, backuping existing files)::
+
+    ./setup.py
