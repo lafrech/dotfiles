@@ -7,8 +7,8 @@ import os.path
 # Note symlink is src <- dst
 SRC_DST = (
     ('bash_aliases', '.bash_aliases'),
-    ('gitconfig', '.gitconfig'),
-    ('gitignore/Global/Vim.gitignore', '.vim_gitignore'),
+    ('git/gitconfig', '.gitconfig'),
+    ('git/gitignore/Global/Vim.gitignore', '.vim_gitignore'),
 )
 
 DIRPATH = os.path.abspath(os.path.join(os.path.dirname(__file__)))
