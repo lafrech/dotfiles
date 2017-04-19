@@ -6,9 +6,14 @@ import os.path
 # src, dst tuples
 # Note symlink is src <- dst
 SRC_DST = (
+    # Bash
     ('bash_aliases', '.bash_aliases'),
+    # Git
     ('git/gitconfig', '.gitconfig'),
     ('git/gitignore/Global/Vim.gitignore', '.vim_gitignore'),
+    # Vim
+    ('vim/vimrc', '.vimrc'),
+    ('vim/runtimepath', '.vim_dotfiles'),
 )
 
 DIRPATH = os.path.abspath(os.path.join(os.path.dirname(__file__)))

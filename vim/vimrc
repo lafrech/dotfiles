@@ -1,0 +1,133 @@
+" -- Plugins --
+" ~/.vim_dotfiles is a symlink to a directory under git control
+:set runtimepath+=~/.vim_dotfiles
+" Load plugins in ~/.vim/bundle and ~/.vim_dotfiles/bundle
+execute pathogen#infect()
+
+
+" -- Generic config stuff --
+:syntax enable
+:set hlsearch
+:set incsearch
+:set scrolloff=7
+:set autoindent
+:set shiftwidth=4
+:set softtabstop=4
+:set expandtab
+:set colorcolumn=80
+filetype on
+filetype plugin on
+:let mapleader = ","
+
+
+" -- Color theme --
+if has('gui_running')
+    :colorscheme solarized
+    set background=dark
+    let g:solarized_diffmode="high"
+else
+    :colorscheme darkblue
+endif
+
+
+" --  Lint --
+" Display error for non-breaking space or trailing space
+au VimEnter,BufWinEnter * syn match ErrorMsg " "
+au VimEnter,BufWinEnter * syn match ErrorMsg " $"
+
+
+" -- Keyboard shortcuts --
+" Ctrl+Tab to move between splits
+map <C-Tab> <C-W>w
+" F10 for paste toggle (toggle paste mode)
+:set pastetoggle=<F10>
+
+
+" -- Syntastic --
+" https://github.com/vim-syntastic/syntastic
+" Following settings are blindly copied from the help page
+" https://github.com/vim-syntastic/syntastic/blob/master/doc/syntastic.txt
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+let g:syntastic_aggregate_errors = 1
+" let g:syntastic_python_python_exec = '/usr/bin/python3'
+" http://stackoverflow.com/a/25637352/4653485
+"let g:syntastic_python_checkers=['flake8', 'pylint']
+"let g:syntastic_python_python_exec = 'python'
+"let g:syntastic_python_pylint_exe = 'python -m pylint'
+let g:syntastic_python_pylint_post_args = '--msg-template="{path}:{line}:{column}:{C}: [{msg_id} {symbol}] {msg}"'
+
+:command SC SyntasticToggleMode
+
+function! ToggleErrors()
+    let old_last_winnr = winnr('$')
+    lclose
+    if old_last_winnr == winnr('$')
+        " Nothing was closed, open syntastic error location panel
+        Errors
+    endif
+endfunction
+
+nnoremap <silent> <C-e> :<C-u>call ToggleErrors()<CR>
+
+
+" -- NERDTree --
+" https://github.com/jistr/vim-nerdtree-tabs
+let g:nerdtree_tabs_open_on_gui_startup = 0
+let g:nerdtree_tabs_autofind = 1
+map <F2> :NERDTreeTabsToggle<CR>
+
+" Shortcuts to move between tabs with Ctrl+Shift+Left/Right
+function TabLeft()
+   let tab_number = tabpagenr() - 1
+   if tab_number == 0
+      execute "tabm" tabpagenr('$') - 1
+   else
+      execute "tabm" tab_number - 1
+   endif
+endfunction
+
+function TabRight()
+   let tab_number = tabpagenr() - 1
+   let last_tab_number = tabpagenr('$') - 1
+   if tab_number == last_tab_number
+      execute "tabm" 0
+   else
+      execute "tabm" tab_number + 1
+   endif
+endfunction
+
+map <silent><C-S-Right> :execute TabRight()<CR>
+map <silent><C-S-Left> :execute TabLeft()<CR>
+
+" Refresh NERDTree on write
+" http://superuser.com/a/1142059/464608
+autocmd BufWritePost * NERDTreeFocus | execute 'normal R' | wincmd p
+
+
+" -- NERDCommenter --
+" https://github.com/scrooloose/nerdcommenter
+" Align line-wise comment delimiters flush left 
+" instead of following code indentation
+let g:NERDDefaultAlign = 'start'
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+map <silent><C-C> <Plug>NERDCommenterComment
+map <silent><C-D> <Plug>NERDCommenterUncomment
+
+
+" -- Pytest --
+nmap <silent><Leader>f <Esc>:Pytest file<CR>
+nmap <silent><Leader>c <Esc>:Pytest class<CR>
+nmap <silent><Leader>m <Esc>:Pytest method<CR>
+
+
+" -- Local settings --
+if filereadable(glob('~/.vimrc_local'))
+    source ~/.vimrc_local
+endif
