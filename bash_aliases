@@ -20,10 +20,10 @@ sfind()
 # Clean compiled files
 alias clpy='find . | grep -E "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf'
 # Virtualenvs
-VIRTUALENVS_DIR='.virtualenvs'
+VIRTUALENVS_DIR=$HOME/.virtualenvs
 activate()
 {
-    source $HOME/$VIRTUALENVS_DIR/$1/bin/activate
+    source $VIRTUALENVS_DIR/$1/bin/activate
 }
 
 # Local configuration
