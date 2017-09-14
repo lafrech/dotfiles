@@ -18,7 +18,9 @@ execute pathogen#infect()
 filetype on
 filetype plugin on
 :let mapleader = ","
-
+" Webpack workaround
+" https://github.com/webpack/webpack/issues/781
+:set backupcopy=yes
 
 " -- Color theme --
 if has('gui_running')
