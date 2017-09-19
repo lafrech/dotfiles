@@ -26,6 +26,10 @@ activate()
     source $VIRTUALENVS_DIR/$1/bin/activate
 }
 
+# Clean vim swap files
+# https://superuser.com/a/805168/
+alias clswp='find . -type f -name ".*.sw[klmnop]" -delete'
+
 # Local configuration
 if [ -f ~/.bashrc_local ]; then
     . ~/.bashrc_local
