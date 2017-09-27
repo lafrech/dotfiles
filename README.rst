@@ -4,6 +4,7 @@ First, install common applications::
 
     aptitude install git
     aptitude install vim vim-pathogen
+    aptitude install virtualenvwrapper
 
 
 Installation / update

@@ -19,12 +19,13 @@ sfind()
 # Python
 # Clean compiled files
 alias clpy='find . | grep -E "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf'
-# Virtualenvs
-VIRTUALENVS_DIR=$HOME/.virtualenvs
-activate()
-{
-    source $VIRTUALENVS_DIR/$1/bin/activate
-}
+# Virtualenvwrapper
+VENVWRP_SH=/usr/share/virtualenvwrapper/virtualenvwrapper.sh
+if [ -f $VENVWRP_SH ]
+then
+    export WORKON_HOME=$HOME/.virtualenvs
+    source $VENVWRP_SH
+fi
 
 # Clean vim swap files
 # https://superuser.com/a/805168/
