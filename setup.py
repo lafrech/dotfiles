@@ -3,6 +3,21 @@
 import os
 import os.path
 
+
+class DotfilesError(Exception):
+    """Generic .dotfiles exception"""
+
+
+class VirtualenvPathError(DotfilesError):
+    """Virtualenv path exists and is not a directory"""
+
+
+# Path to .dotfiles directory
+DIRPATH = os.path.abspath(os.path.join(os.path.dirname(__file__)))
+
+# Python virtual environments directory
+VIRTUALENVS_DIR = os.path.expanduser('~/.virtualenvs')
+
 # src, dst tuples
 # Note symlink is src <- dst
 SRC_DST = (
@@ -15,8 +30,6 @@ SRC_DST = (
     ('vim/vimrc', '.vimrc'),
     ('vim/runtimepath', '.vim_dotfiles'),
 )
-
-DIRPATH = os.path.abspath(os.path.join(os.path.dirname(__file__)))
 
 
 def make_link(src_rel, dst_rel):
@@ -41,5 +54,16 @@ def make_link(src_rel, dst_rel):
     print('Create symlink {} -> {}'.format(dst, src))
     os.symlink(src, dst)
 
+
+# Create virtualenvs directory
+try:
+    os.mkdir(VIRTUALENVS_DIR)
+except FileExistsError:
+    if not os.path.isdir(VIRTUALENVS_DIR):
+        raise VirtualenvPathError(
+            "{} exists and is not a directory".format(VIRTUALENVS_DIR))
+
+
+# Create / update symbolic links
 for src_r, dst_r in SRC_DST:
     make_link(src_r, dst_r)
