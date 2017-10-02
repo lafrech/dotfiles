@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
 
+"""Setup dotfiles
+
+Create symlink to files in .dotfiles repository
+"""
+
 import os
 import os.path
 
@@ -16,7 +21,7 @@ class VirtualenvPathError(DotfilesError):
 DIRPATH = os.path.abspath(os.path.join(os.path.dirname(__file__)))
 
 # Python virtual environments directory
-VIRTUALENVS_DIR = os.path.expanduser('~/.virtualenvs')
+VIRTUALENVS_DIR = os.path.join(os.environ['HOME'], '.virtualenvs')
 
 # src, dst tuples
 # Note symlink is src <- dst
@@ -29,6 +34,9 @@ SRC_DST = (
     # Vim
     ('vim/vimrc', '.vimrc'),
     ('vim/runtimepath', '.vim_dotfiles'),
+    # Python
+    ('python/postmkvirtualenv',
+     os.path.join(VIRTUALENVS_DIR, 'postmkvirtualenv')),
 )
 
 
