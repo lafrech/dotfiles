@@ -15,6 +15,7 @@ execute pathogen#infect()
 :set softtabstop=4
 :set expandtab
 :set colorcolumn=80
+:set nu
 filetype on
 filetype plugin on
 :let mapleader = ","
