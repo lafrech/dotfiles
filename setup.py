@@ -37,6 +37,7 @@ SRC_DST = (
     # Python
     ('python/postmkvirtualenv',
      os.path.join(VIRTUALENVS_DIR, 'postmkvirtualenv')),
+    ('python/pypirc', '.pypirc'),
 )
 
 
