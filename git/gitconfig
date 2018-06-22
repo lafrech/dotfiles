@@ -16,7 +16,6 @@
         rm-remote-branch = push origin --delete
         # http://stackoverflow.com/a/4611550/4653485
 	pullall = "!f(){ git pull \"$@\" && git submodule update --init --recursive; }; f"
-[submodule]
-	recurse = true
+
 [include]
-	path = ~/.gitconfig_local
+    path = ~/.gitconfig_local
