@@ -31,3 +31,6 @@
 [submodule "vim/runtimepath/bundle/vim-nerdtree-tabs"]
 	path = vim/runtimepath/bundle/vim-nerdtree-tabs
 	url = https://github.com/jistr/vim-nerdtree-tabs
+[submodule "vim/runtimepath/bundle/ale"]
+	path = vim/runtimepath/bundle/ale
+	url = https://github.com/w0rp/ale.git
