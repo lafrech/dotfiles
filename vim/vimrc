@@ -46,39 +46,6 @@ map <C-Tab> <C-W>w
 :set pastetoggle=<F10>
 
 
-" -- Syntastic --
-" https://github.com/vim-syntastic/syntastic
-" Following settings are blindly copied from the help page
-" https://github.com/vim-syntastic/syntastic/blob/master/doc/syntastic.txt
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_aggregate_errors = 1
-" let g:syntastic_python_python_exec = '/usr/bin/python3'
-" http://stackoverflow.com/a/25637352/4653485
-"let g:syntastic_python_python_exec = 'python'
-"let g:syntastic_python_pylint_exe = 'python -m pylint'
-let g:syntastic_python_pylint_post_args = '--msg-template="{path}:{line}:{column}:{C}: [{msg_id} {symbol}] {msg}"'
-let g:syntastic_javascript_checkers=['eslint']
-
-:command SC SyntasticToggleMode
-
-function! ToggleErrors()
-    let old_last_winnr = winnr('$')
-    lclose
-    if old_last_winnr == winnr('$')
-        " Nothing was closed, open syntastic error location panel
-        Errors
-    endif
-endfunction
-
-nnoremap <silent> <C-e> :<C-u>call ToggleErrors()<CR>
-
-
 " -- NERDTree --
 " https://github.com/jistr/vim-nerdtree-tabs
 let g:nerdtree_tabs_open_on_gui_startup = 0
