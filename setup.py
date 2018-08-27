@@ -17,7 +17,7 @@ class VirtualenvPathError(DotfilesError):
     """Virtualenv path exists and is not a directory"""
 
 
-# Path to .dotfiles directory
+# Path to .dotfiles directory
 DIRPATH = os.path.abspath(os.path.join(os.path.dirname(__file__)))
 
 # Python virtual environments directory
@@ -34,7 +34,7 @@ SRC_DST = (
     # Vim
     ('vim/vimrc', '.vimrc'),
     ('vim/runtimepath', '.vim_dotfiles'),
-    # Python
+    # Python
     ('python/postmkvirtualenv',
      os.path.join(VIRTUALENVS_DIR, 'postmkvirtualenv')),
     ('python/pypirc', '.pypirc'),
