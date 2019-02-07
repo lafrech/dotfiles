@@ -20,6 +20,7 @@ sfind()
 # Clean compiled files
 alias clpy='find . | grep -E "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf'
 # Virtualenvwrapper
+export VIRTUALENV_PYTHON=/usr/bin/python3
 VENVWRP_SH=/usr/share/virtualenvwrapper/virtualenvwrapper.sh
 if [ -f $VENVWRP_SH ]
 then
