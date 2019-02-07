@@ -3,7 +3,7 @@
 # https://stackoverflow.com/a/33160643/
 #
 # HowTo:
-# python setup.py bdist_wheel
+# python setup.py sdist bdist_wheel
 # twine upload --repository=testpypi dist/*
 # twine upload dist/*
 
