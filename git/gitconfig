@@ -15,6 +15,9 @@
 	hist = log --pretty=format:'%C(auto)%h %ad | %s%d %C(magenta)[%an]' --graph --date=short
         # http://stackoverflow.com/a/4611550/4653485
 	pullall = "!f(){ git pull \"$@\" && git submodule update --init --recursive; }; f"
+        # https://github.community/t5/How-to-use-Git-and-GitHub/Checkout-a-branch-from-a-fork/td-p/77
+        # https://github.com/lee-dohm/dotfiles/blob/8d3c59004154571578c2b32df2cdebb013517630/gitconfig#L8
+        co-pr = !sh -c 'git fetch origin pull/$1/head:pr/$1 && git checkout pr/$1' -
 
 [include]
     path = ~/.gitconfig_local
