@@ -16,6 +16,15 @@ sfind()
     find "$1" -type f \! -path "./.*" | xargs grep -In --color "$2"
 }
 
+# Find and replace in source code
+sreplace()
+{
+    for f in `find "$1" -type f \! -path "./.*" `;
+    do
+      sed -i 's/'$2'/'$3'/' $f;
+    done
+}
+
 # Python
 # Clean compiled files
 alias clpy='find . | grep -E "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf'
