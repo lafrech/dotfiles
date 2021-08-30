@@ -2,35 +2,35 @@
 	path = git/gitignore
 	url = https://github.com/github/gitignore
 [submodule "vim/runtimepath/bundle/delimitMate"]
-	path = vim/runtimepath/bundle/delimitMate
+	path = vim/plugins/start/delimitMate
 	url = https://github.com/Raimondi/delimitMate
 [submodule "vim/runtimepath/bundle/nerdcommenter"]
-	path = vim/runtimepath/bundle/nerdcommenter
+	path = vim/plugins/start/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter
 [submodule "vim/runtimepath/bundle/nerdtree"]
-	path = vim/runtimepath/bundle/nerdtree
+	path = vim/plugins/start/nerdtree
 	url = https://github.com/scrooloose/nerdtree
 [submodule "vim/runtimepath/bundle/pytest.vim"]
-	path = vim/runtimepath/bundle/pytest.vim
+	path = vim/plugins/start/pytest.vim
 	url = https://github.com/alfredodeza/pytest.vim
 [submodule "vim/runtimepath/bundle/syntastic"]
 	path = vim/runtimepath/bundle/syntastic
 	url = https://github.com/vim-syntastic/syntastic
 [submodule "vim/runtimepath/bundle/vim-colors-solarized"]
-	path = vim/runtimepath/bundle/vim-colors-solarized
+	path = vim/plugins/start/vim-colors-solarized
 	url = https://github.com/altercation/vim-colors-solarized
 [submodule "vim/runtimepath/bundle/vim-flake8"]
-	path = vim/runtimepath/bundle/vim-flake8
+	path = vim/plugins/start/vim-flake8
 	url = https://github.com/nvie/vim-flake8
 [submodule "vim/runtimepath/bundle/vim-gitgutter"]
-	path = vim/runtimepath/bundle/vim-gitgutter
+	path = vim/plugins/start/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter
 [submodule "vim/runtimepath/bundle/vim-jinja"]
-	path = vim/runtimepath/bundle/vim-jinja
+	path = vim/plugins/start/vim-jinja
 	url = https://github.com/mitsuhiko/vim-jinja
 [submodule "vim/runtimepath/bundle/vim-nerdtree-tabs"]
-	path = vim/runtimepath/bundle/vim-nerdtree-tabs
+	path = vim/plugins/start/vim-nerdtree-tabs
 	url = https://github.com/jistr/vim-nerdtree-tabs
 [submodule "vim/runtimepath/bundle/ale"]
-	path = vim/runtimepath/bundle/ale
+	path = vim/plugins/start/ale
 	url = https://github.com/w0rp/ale.git

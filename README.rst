@@ -3,7 +3,7 @@ This repository stores configuration files (dotfiles) for a few applications.
 First, install common applications::
 
     aptitude install git
-    aptitude install vim vim-pathogen
+    aptitude install vim
     aptitude install virtualenvwrapper
 
 

@@ -1,10 +1,8 @@
 #!/usr/bin/env python3
-
 """Setup dotfiles
 
 Create symlink to files in .dotfiles repository
 """
-
 import os
 import os.path
 
@@ -13,8 +11,8 @@ class DotfilesError(Exception):
     """Generic .dotfiles exception"""
 
 
-class VirtualenvPathError(DotfilesError):
-    """Virtualenv path exists and is not a directory"""
+class MkDirError(DotfilesError):
+    """Path exists and is not a directory"""
 
 
 # Path to .dotfiles directory
@@ -22,6 +20,13 @@ DIRPATH = os.path.abspath(os.path.join(os.path.dirname(__file__)))
 
 # Python virtual environments directory
 VIRTUALENVS_DIR = os.path.join(os.environ['HOME'], '.virtualenvs')
+
+# .vim directory
+VIM_DIR = os.path.join(os.environ['HOME'], '.vim')
+
+# .vim/pack directory
+VIM_PACK_DIR = os.path.join(VIM_DIR, 'pack')
+
 
 # src, dst tuples
 # Note symlink is src <- dst
@@ -33,7 +38,7 @@ SRC_DST = (
     ('git/gitignore/Global/Vim.gitignore', '.vim_gitignore'),
     # Vim
     ('vim/vimrc', '.vimrc'),
-    ('vim/runtimepath', '.vim_dotfiles'),
+    ('vim/plugins/', '.vim/pack/dotfiles-plugins'),
     # Python
     ('python/postmkvirtualenv',
      os.path.join(VIRTUALENVS_DIR, 'postmkvirtualenv')),
@@ -64,13 +69,23 @@ def make_link(src_rel, dst_rel):
     os.symlink(src, dst)
 
 
+
+def mkdir(dir_path):
+    try:
+        os.mkdir(dir_path)
+    except FileExistsError:
+        if not os.path.isdir(dir_path):
+            raise MkDirError(
+                "{} exists and is not a directory".format(dir_path))
+
+
 # Create virtualenvs directory
-try:
-    os.mkdir(VIRTUALENVS_DIR)
-except FileExistsError:
-    if not os.path.isdir(VIRTUALENVS_DIR):
-        raise VirtualenvPathError(
-            "{} exists and is not a directory".format(VIRTUALENVS_DIR))
+mkdir(VIRTUALENVS_DIR)
+
+
+# Create .vim/pack directory
+mkdir(VIM_DIR)
+mkdir(VIM_PACK_DIR)
 
 
 # Create / update symbolic links

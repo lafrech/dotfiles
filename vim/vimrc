@@ -1,10 +1,3 @@
-" -- Plugins --
-" ~/.vim_dotfiles is a symlink to a directory under git control
-:set runtimepath+=~/.vim_dotfiles
-" Load plugins in ~/.vim/bundle and ~/.vim_dotfiles/bundle
-execute pathogen#infect()
-
-
 " -- Generic config stuff --
 :syntax enable
 :set hlsearch
