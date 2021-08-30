@@ -3,8 +3,7 @@
 
 Create symlink to files in .dotfiles repository
 """
-import os
-import os.path
+from pathlib import Path
 
 
 class DotfilesError(Exception):
@@ -16,76 +15,73 @@ class MkDirError(DotfilesError):
 
 
 # Path to .dotfiles directory
-DIRPATH = os.path.abspath(os.path.join(os.path.dirname(__file__)))
+DIRPATH = Path(__file__).resolve().parent
 
 # Python virtual environments directory
-VIRTUALENVS_DIR = os.path.join(os.environ['HOME'], '.virtualenvs')
+VIRTUALENVS_DIR = Path.home() / ".virtualenvs"
 
 # .vim directory
-VIM_DIR = os.path.join(os.environ['HOME'], '.vim')
+VIM_DIR = Path.home() / ".vim"
 
 # .vim/pack directory
-VIM_PACK_DIR = os.path.join(VIM_DIR, 'pack')
+VIM_PACK_DIR = VIM_DIR / "pack"
 
 
 # src, dst tuples
 # Note symlink is src <- dst
 SRC_DST = (
     # Bash
-    ('bash_aliases', '.bash_aliases'),
+    ("bash_aliases", ".bash_aliases"),
     # Git
-    ('git/gitconfig', '.gitconfig'),
-    ('git/gitignore/Global/Vim.gitignore', '.vim_gitignore'),
+    ("git/gitconfig", ".gitconfig"),
+    ("git/gitignore/Global/Vim.gitignore", ".vim_gitignore"),
     # Vim
-    ('vim/vimrc', '.vimrc'),
-    ('vim/plugins/', '.vim/pack/dotfiles-plugins'),
+    ("vim/vimrc", ".vimrc"),
+    ("vim/plugins/", VIM_PACK_DIR / "dotfiles-plugins"),
     # Python
-    ('python/postmkvirtualenv',
-     os.path.join(VIRTUALENVS_DIR, 'postmkvirtualenv')),
-    ('python/pypirc', '.pypirc'),
+    ("python/postmkvirtualenv", VIRTUALENVS_DIR / "postmkvirtualenv"),
+    ("python/pypirc", ".pypirc"),
 )
 
 
 def make_link(src_rel, dst_rel):
     """Create a symbolic link pointing to src named dst
 
-    Make a few checks/backups before calling os.symlink
+    Make a few checks/backups before symlinking
 
     src: path relative to this directory
     dst: path relative to HOME
     """
 
-    src = os.path.join(DIRPATH, src_rel)
-    dst = os.path.join(os.environ['HOME'], dst_rel)
+    src = DIRPATH / src_rel
+    dst = Path.home() / dst_rel
 
-    if os.path.islink(dst):
-        print('Remove symlink {}'.format(dst))
-        os.remove(dst)
-    elif os.path.isfile(dst) or os.path.isdir(dst):
-        bak = '{}.bak'.format(dst)
-        print('Backup {} into {}'.format(dst, bak))
-        os.rename(dst, bak)
-    print('Create symlink {} -> {}'.format(dst, src))
-    os.symlink(src, dst)
+    if dst.is_symlink():
+        print(f"Remove symlink {dst}")
+        dst.unlink()
+    elif dst.is_file() or dst.is_dir():
+        bak = f"{dst}.bak"
+        print(f"Backup {dst} into {bak}")
+        dst.rename(bak)
+    print(f"Create symlink {dst} -> {src}")
+    dst.symlink_to(src)
 
 
-
-def mkdir(dir_path):
+def make_dir(dir_path):
     try:
-        os.mkdir(dir_path)
+        dir_path.mkdir()
     except FileExistsError:
-        if not os.path.isdir(dir_path):
-            raise MkDirError(
-                "{} exists and is not a directory".format(dir_path))
+        if not dir_path.is_dir():
+            raise MkDirError(f"{dir_path} exists and is not a directory")
 
 
 # Create virtualenvs directory
-mkdir(VIRTUALENVS_DIR)
+make_dir(VIRTUALENVS_DIR)
 
 
 # Create .vim/pack directory
-mkdir(VIM_DIR)
-mkdir(VIM_PACK_DIR)
+make_dir(VIM_DIR)
+make_dir(VIM_PACK_DIR)
 
 
 # Create / update symbolic links
