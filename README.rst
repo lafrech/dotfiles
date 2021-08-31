@@ -28,13 +28,3 @@ Installation / update
 Run setup script (creates symlinks in home dir, backuping existing files)::
 
     ./setup.py
-
-
-Other stuff not (yet ?) in this repo
-------------------------------------
-
-Mongo-hacker::
-
-    git clone https://github.com/TylerBrock/mongo-hacker ~/.mongo-hacker
-    cd ~/.mongo-hacker
-    make install
