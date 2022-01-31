@@ -21,7 +21,7 @@ sreplace()
 {
     for f in `find "$1" -type f \! -path "./.*" `;
     do
-      sed -i "s/$2/$3/" $f;
+      sed -i "s/$2/$3/g" $f;
     done
 }
 
