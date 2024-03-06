@@ -16,9 +16,6 @@
 [submodule "vim/runtimepath/bundle/vim-colors-solarized"]
 	path = vim/plugins/start/vim-colors-solarized
 	url = https://github.com/altercation/vim-colors-solarized
-[submodule "vim/runtimepath/bundle/vim-flake8"]
-	path = vim/plugins/start/vim-flake8
-	url = https://github.com/nvie/vim-flake8
 [submodule "vim/runtimepath/bundle/vim-gitgutter"]
 	path = vim/plugins/start/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter
