@@ -6,10 +6,10 @@
 	url = https://github.com/Raimondi/delimitMate
 [submodule "vim/runtimepath/bundle/nerdcommenter"]
 	path = vim/plugins/start/nerdcommenter
-	url = https://github.com/scrooloose/nerdcommenter
+	url = https://github.com/preservim/nerdcommenter
 [submodule "vim/runtimepath/bundle/nerdtree"]
 	path = vim/plugins/start/nerdtree
-	url = https://github.com/scrooloose/nerdtree
+	url = https://github.com/preservim/nerdtree
 [submodule "vim/runtimepath/bundle/pytest.vim"]
 	path = vim/plugins/start/pytest.vim
 	url = https://github.com/alfredodeza/pytest.vim
@@ -28,9 +28,6 @@
 [submodule "vim/runtimepath/bundle/vim-jinja"]
 	path = vim/plugins/start/vim-jinja
 	url = https://github.com/mitsuhiko/vim-jinja
-[submodule "vim/runtimepath/bundle/vim-nerdtree-tabs"]
-	path = vim/plugins/start/vim-nerdtree-tabs
-	url = https://github.com/jistr/vim-nerdtree-tabs
 [submodule "vim/runtimepath/bundle/ale"]
 	path = vim/plugins/start/ale
 	url = https://github.com/w0rp/ale.git

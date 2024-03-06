@@ -40,10 +40,23 @@ map <C-Tab> <C-W>w
 
 
 " -- NERDTree --
-" https://github.com/jistr/vim-nerdtree-tabs
-let g:nerdtree_tabs_open_on_gui_startup = 0
-let g:nerdtree_tabs_autofind = 1
-map <F2> :NERDTreeTabsToggle<CR>
+map <F2> :NERDTreeToggle<CR>
+
+" Start NERDTree. If a file is specified, move the cursor to its window.
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * NERDTree | if argc() > 0 || exists("s:std_in") | wincmd p | endif
+" Exit Vim if NERDTree is the only window remaining in the only tab.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+" Close the tab if NERDTree is the only window remaining in it.
+autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | call feedkeys(":quit\<CR>:\<BS>") | endif
+" If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
+autocmd BufEnter * if winnr() == winnr('h') && bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
+    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
+" Open the existing NERDTree on each new tab.
+autocmd BufWinEnter * if &buftype != 'quickfix' && getcmdwintype() == '' | silent NERDTreeMirror | endif
+
+
+
 
 " Shortcuts to move between tabs with Ctrl+Shift+Left/Right
 " https://stackoverflow.com/a/48112110
@@ -73,7 +86,7 @@ autocmd BufWritePost * NERDTreeFocus | execute 'normal R' | wincmd p
 
 " -- NERDCommenter --
 " https://github.com/scrooloose/nerdcommenter
-" Align line-wise comment delimiters flush left 
+" Align line-wise comment delimiters flush left
 " instead of following code indentation
 let g:NERDDefaultAlign = 'start'
 " Allow commenting and inverting empty lines (useful when commenting a region)
