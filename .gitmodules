@@ -10,9 +10,6 @@
 [submodule "vim/runtimepath/bundle/nerdtree"]
 	path = vim/plugins/start/nerdtree
 	url = https://github.com/preservim/nerdtree
-[submodule "vim/runtimepath/bundle/pytest.vim"]
-	path = vim/plugins/start/pytest.vim
-	url = https://github.com/alfredodeza/pytest.vim
 [submodule "vim/runtimepath/bundle/syntastic"]
 	path = vim/runtimepath/bundle/syntastic
 	url = https://github.com/vim-syntastic/syntastic

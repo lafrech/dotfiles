@@ -95,12 +95,6 @@ map <silent><C-C> <Plug>NERDCommenterComment
 map <silent><C-D> <Plug>NERDCommenterUncomment
 
 
-" -- Pytest --
-nmap <silent><Leader>f <Esc>:Pytest file<CR>
-nmap <silent><Leader>c <Esc>:Pytest class<CR>
-nmap <silent><Leader>m <Esc>:Pytest method<CR>
-
-
 " -- Local settings --
 if filereadable(glob('~/.vimrc_local'))
     source ~/.vimrc_local
