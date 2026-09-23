@@ -94,8 +94,10 @@ autocmd BufWritePost * NERDTreeFocus | execute 'normal R' | wincmd p
 let g:NERDDefaultAlign = 'start'
 " Allow commenting and inverting empty lines (useful when commenting a region)
 let g:NERDCommentEmptyLines = 1
-map <silent><C-C> <Plug>NERDCommenterComment
-map <silent><C-D> <Plug>NERDCommenterUncomment
+" https://github.com/preservim/nerdcommenter/issues/528
+" restore selection with gv
+map <silent><C-C> <Plug>NERDCommenterComment gv
+map <silent><C-D> <Plug>NERDCommenterUncomment gv
 
 
 " -- Local settings --
