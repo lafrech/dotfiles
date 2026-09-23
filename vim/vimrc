@@ -1,4 +1,7 @@
 " -- Generic config stuff --
+:set encoding=UTF-8
+:set guifont=DejaVuSansMono
+:let g:airline_powerline_fonts = 1
 :syntax enable
 :set hlsearch
 :set incsearch
@@ -7,7 +10,7 @@
 :set shiftwidth=4
 :set softtabstop=4
 :set expandtab
-:set colorcolumn=80
+:set colorcolumn=90
 :set nu
 filetype on
 filetype plugin on
